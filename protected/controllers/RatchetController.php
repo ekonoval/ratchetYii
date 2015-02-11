@@ -41,4 +41,9 @@ class RatchetController extends CController
 
         $this->render('generateEvents');
     }
+
+    public function actionTestWs()
+    {
+        $this->render('testWs_tpl');
+    }
 }
