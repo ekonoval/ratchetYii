@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_error', 1);
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -16,9 +18,10 @@ return array(
     'import' => array(
         'application.models.*',
         'application.components.*',
+        'application.extensions.AppdRatchet.*',
     ),
 
-    'defaultController' => 'post',
+    //'defaultController' => 'post',
 
     // application components
     'components' => array(
@@ -31,35 +34,34 @@ return array(
             'tablePrefix' => 'tbl_',
         ),
         // uncomment the following to use a MySQL database
-        /*
-        'db'=>array(
-            'connectionString' => 'mysql:host=localhost;dbname=blog',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-            'tablePrefix' => 'tbl_',
-        ),
-        */
+
         'errorHandler' => array(
             // use 'site/error' action to display errors
-            'errorAction' => 'site/error',
+            //'errorAction' => 'site/error',
         ),
+
         'urlManager' => array(
             'urlFormat' => 'path',
+            'showScriptName' => false,
             'rules' => array(
                 'post/<id:\d+>/<title:.*?>' => 'post/view',
                 'posts/<tag:.*?>' => 'post/index',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
         ),
+
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
                 array(
-                    'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
+                    'class' => 'CWebLogRoute',
+                    'categories' => 'application',
+                    'levels'=>'error, warning, trace, profile, info',
                 ),
+//                array(
+//                    'class' => 'CFileLogRoute',
+//                    'levels' => 'error, warning',
+//                ),
                 // uncomment the following to show log messages on web pages
                 /*
                 array(

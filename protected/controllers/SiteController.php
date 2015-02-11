@@ -10,7 +10,12 @@ class SiteController extends CController
      */
     public function actionIndex()
     {
-        //echo 'Hello World';
-        phpinfo();
+        echo 'sitecontroller index';
+        //phpinfo();
+    }
+
+    public function actionError()
+    {
+        echo "<h2>error  </h2>\n";
     }
 }
