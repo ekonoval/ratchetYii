@@ -1,12 +1,7 @@
 <?php
-namespace RExt;
-
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use React\ZMQ\Context;
-use ZMQ;
-use React;
-use Ratchet;
 
 class AppdRatchetCliServer
 {

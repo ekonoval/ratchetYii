@@ -1,6 +1,4 @@
 <?php
-namespace RExt;
-
 use Ratchet\Wamp\Exception;
 use Ratchet\Wamp\WampServerInterface;
 use Ratchet\ConnectionInterface;
@@ -21,7 +19,8 @@ class AppdRatchetPusherBase implements WampServerInterface
     }
 
     /**
-     * @param string JSON'ified string we'll receive from ZeroMQ
+     * @param $entry JSON'ified string we'll receive from ZeroMQ
+     * @throws Exception
      */
     public function onCommonEvent($entry)
     {

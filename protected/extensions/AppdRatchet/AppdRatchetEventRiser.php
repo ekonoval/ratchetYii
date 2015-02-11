@@ -1,9 +1,4 @@
 <?php
-namespace RExt;
-
-use ZMQ;
-use ZMQContext;
-use ZMQSocket;
 
 class AppdRatchetEventRiser
 {
