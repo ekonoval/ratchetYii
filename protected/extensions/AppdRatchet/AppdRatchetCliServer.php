@@ -1,6 +1,7 @@
 <?php
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
+use React\EventLoop\StreamSelectLoop;
 use React\ZMQ\Context;
 
 class AppdRatchetCliServer
@@ -27,7 +28,12 @@ class AppdRatchetCliServer
      */
     function __construct(AppdRatchetPusherBase $pusher, $serverPoolAddress, $websocketAddress)
     {
-        $this->loop = Factory::create();
+        //$this->loop = Factory::create();
+        /*
+         * Taken from React\EventLoop\Factory::create().
+         * As tryinig to perform class_exists('EventBase') in this method triggers error in native Yii autoloader
+         */
+        $this->loop = new StreamSelectLoop();
         $this->pusher = $pusher;
 
         $this->serverPoolAddress =  $serverPoolAddress;
