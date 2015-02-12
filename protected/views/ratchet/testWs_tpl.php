@@ -7,12 +7,18 @@
     <script src="http://autobahn.s3.amazonaws.com/js/autobahn.min.js"></script>
 
     <script>
-        var conn = new ab.Session('ws://localhost:8080',
+        var conn = new ab.Session(
+            //'ws://localhost:8080',
+            'ws://test.dev:8080',
             function() {
                 console.log('ab ws connected');
-                conn.subscribe('kittensCategory', function(topic, data) {
-                    // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
-                    console.log('New article published to category "' + topic + '" : ' + data.title);
+                conn.subscribe('chatMsgSend', function(topic, data) {
+                    console.log('Chat msg has been sent:' + topic );
+                    console.log(data);
+                });
+
+                conn.subscribe('figureMove', function(topic, data) {
+                    console.log('Figure has been moved:' + topic );
                     console.log(data);
                 });
             },
