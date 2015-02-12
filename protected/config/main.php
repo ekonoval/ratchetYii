@@ -58,10 +58,10 @@ return array(
                     'categories' => 'application',
                     'levels'=>'error, warning, trace, profile, info',
                 ),
-//                array(
-//                    'class' => 'CFileLogRoute',
-//                    'levels' => 'error, warning',
-//                ),
+                array(
+                    'class' => 'CFileLogRoute',
+                    'levels'=>'trace, info',
+                ),
                 // uncomment the following to show log messages on web pages
                 /*
                 array(
