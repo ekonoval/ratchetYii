@@ -3,7 +3,7 @@
 return array(
     /**
      * Workaround!
-     * After changing ports an apache restart may help.
+     * After changing ports an apache restart may be required.
      */
     'appdRatchet' => array(
         'zmq' => array(
