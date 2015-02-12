@@ -40,4 +40,13 @@ class AppdRatchetParams
     {
         return $this->getWebSocketParam('port');
     }
+
+    public function createHostPortString($host, $port)
+    {
+        return sprintf(
+            '%s:%s',
+            $host,
+            $port
+        );
+    }
 }

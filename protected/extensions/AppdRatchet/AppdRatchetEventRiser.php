@@ -8,6 +8,20 @@ class AppdRatchetEventRiser
     protected $socket;
 
     /**
+     * @return AppdRatchetEventRiser
+     */
+    static function createByConfigParams()
+    {
+        $rtParamsGetter = new AppdRatchetParams();
+        $serverPushAddress = $rtParamsGetter->createHostPortString(
+            $rtParamsGetter->getWebSocketParam('serverHost'),
+            $rtParamsGetter->getWebSocketPort()
+        );
+        //$eventRiser = new AppdRatchetEventRiser('localhost:1234');
+        return new AppdRatchetEventRiser($serverPushAddress);
+    }
+
+    /**
      * @param string $serverPushAddress  - 'localhost:5555'
      */
     function __construct($serverPushAddress)

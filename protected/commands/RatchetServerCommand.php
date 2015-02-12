@@ -16,8 +16,14 @@ class RatchetServerCommand extends CConsoleCommand
 
         $cliServer = new AppdRatchetCliServer(
             $pusher,
-            $rtParamsGetter->getZmqParam('hostPull') . ':' . $rtParamsGetter->getZmqPort(),
-            $rtParamsGetter->getWebSocketParam('serverHost') . ':' . $rtParamsGetter->getWebSocketPort()
+            $rtParamsGetter->createHostPortString(
+                $rtParamsGetter->getZmqParam('hostPull'),
+                $rtParamsGetter->getZmqPort()
+            ),
+            $rtParamsGetter->createHostPortString(
+                $rtParamsGetter->getWebSocketParam('serverHost'),
+                $rtParamsGetter->getWebSocketPort()
+            )
         );
 
         $cliServer->mainRun();

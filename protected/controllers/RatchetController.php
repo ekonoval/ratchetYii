@@ -13,7 +13,8 @@ class RatchetController extends CController
             //    $context = new ZMQContext();
             //    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'somePesistentString');
             //    $socket->connect("tcp://localhost:1234");
-            $eventRiser = new AppdRatchetEventRiser('localhost:1234');
+            //$eventRiser = new AppdRatchetEventRiser('localhost:1234');
+            $eventRiser = AppdRatchetEventRiser::createByConfigParams();
 
             $res = array();
 
