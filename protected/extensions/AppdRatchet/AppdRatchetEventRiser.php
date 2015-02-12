@@ -14,12 +14,12 @@ class AppdRatchetEventRiser
     {
         $rtParamsGetter = new AppdRatchetParams();
         $serverPushAddress = $rtParamsGetter->createHostPortString(
-            $rtParamsGetter->getWebSocketParam('clientHost'),
-            $rtParamsGetter->getWebSocketPort()
+            $rtParamsGetter->getZmqParam('hostPush'),
+            $rtParamsGetter->getZmqPort()
         );
         //$eventRiser = new AppdRatchetEventRiser('localhost:1234');
 
-        return new AppdRatchetEventRiser($serverPushAddress);
+        return new self($serverPushAddress);
     }
 
     /**
