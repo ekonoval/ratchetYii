@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Rises server event and pushes entry to the pull. Later broadcasted via pusher
+ */
 class AppdRatchetEventRiser
 {
     /**

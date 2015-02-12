@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Must be run in console permanently to keep websocket and zmq servers alive
+ * ./yiic ratchetserver
+ */
 class RatchetServerCommand extends CConsoleCommand
 {
     public function actionIndex()

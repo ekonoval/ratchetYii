@@ -3,6 +3,10 @@ use Ratchet\Wamp\Exception;
 use Ratchet\Wamp\WampServerInterface;
 use Ratchet\ConnectionInterface;
 
+/**
+ * See ratchet push integration
+ * http://socketo.me/docs/push
+ */
 class AppdRatchetPusherBase implements WampServerInterface
 {
     /**

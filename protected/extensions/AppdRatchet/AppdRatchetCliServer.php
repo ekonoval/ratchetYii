@@ -4,6 +4,10 @@ use React\EventLoop\LoopInterface;
 use React\EventLoop\StreamSelectLoop;
 use React\ZMQ\Context;
 
+/**
+ * Used in console command.
+ * Handles websocket and zmq server
+ */
 class AppdRatchetCliServer
 {
     /**
@@ -40,23 +44,6 @@ class AppdRatchetCliServer
         $this->parseWebSocketAddress($websocketAddress);
     }
 
-    private function parseWebSocketAddress($websocketAddress)
-    {
-        $this->ensure(!empty($websocketAddress), 'Incorrect websocket address');
-
-        $res = explode(':', $websocketAddress);
-        $this->ensure(sizeof($res) == 2, 'Incorrect websocket address format');
-        $this->webSocketHost = $res[0];
-        $this->webSocketPort = $res[1];
-    }
-
-    private function ensure($expr, $failMsg)
-    {
-        if (!$expr) {
-            throw new \Exception($failMsg);
-        }
-    }
-
     public function mainRun()
     {
         $this->bindZmqPullListener();
@@ -91,5 +78,22 @@ class AppdRatchetCliServer
             ),
             $webSock
         );
+    }
+
+    private function parseWebSocketAddress($websocketAddress)
+    {
+        $this->ensure(!empty($websocketAddress), 'Incorrect websocket address');
+
+        $res = explode(':', $websocketAddress);
+        $this->ensure(sizeof($res) == 2, 'Incorrect websocket address format');
+        $this->webSocketHost = $res[0];
+        $this->webSocketPort = $res[1];
+    }
+
+    private function ensure($expr, $failMsg)
+    {
+        if (!$expr) {
+            throw new \Exception($failMsg);
+        }
     }
 }
