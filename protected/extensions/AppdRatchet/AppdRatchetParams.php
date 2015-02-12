@@ -49,4 +49,15 @@ class AppdRatchetParams
             $port
         );
     }
+
+    public function getClientWebsocketConnectionString()
+    {
+        $connStr = "ws://";
+        $addr = $this->createHostPortString(
+            $this->getWebSocketParam('clientHost'),
+            $this->getWebSocketPort()
+        );
+
+        return $connStr.$addr;
+    }
 }

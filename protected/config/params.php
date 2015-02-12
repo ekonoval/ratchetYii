@@ -13,7 +13,7 @@ return array(
         ),
         'webSocket' => array(
             'serverHost' => '0.0.0.0',
-            'clienHost' => 'localhost',
+            'clientHost' => 'localhost',
             'port'  => 8080
         )
     )

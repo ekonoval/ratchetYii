@@ -45,6 +45,10 @@ class RatchetController extends CController
 
     public function actionTestWs()
     {
-        $this->render('testWs_tpl');
+        $rtParamsGetter = new AppdRatchetParams();
+
+        $this->render('testWs_tpl', array(
+            'webSocketConnectionStr' => $rtParamsGetter->getClientWebsocketConnectionString()
+        ));
     }
 }

@@ -8,7 +8,8 @@
 
     <script>
         var conn = new ab.Session(
-            'ws://localhost:8080',
+            '<?=$webSocketConnectionStr?>',
+            //'ws://localhost:8080',
             //'ws://test.dev:8080',
             function() {
                 console.log('ab ws connected');
