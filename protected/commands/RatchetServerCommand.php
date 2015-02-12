@@ -6,7 +6,20 @@ class RatchetServerCommand extends CConsoleCommand
     {
         $pusher = new AppdRatchetPusherBase();
 
-        $cliServer = new AppdRatchetCliServer($pusher, '127.0.0.1:1234', '0.0.0.0:8080');
+//        $cliServer = new AppdRatchetCliServer(
+//            $pusher,
+//            '127.0.0.1:1234',
+//            '0.0.0.0:8080'
+//        );
+
+        $rtParamsGetter = new AppdRatchetParams();
+
+        $cliServer = new AppdRatchetCliServer(
+            $pusher,
+            $rtParamsGetter->getZmqParam('hostPull') . ':' . $rtParamsGetter->getZmqPort(),
+            $rtParamsGetter->getWebSocketParam('serverHost') . ':' . $rtParamsGetter->getWebSocketPort()
+        );
+
         $cliServer->mainRun();
     }
 }
