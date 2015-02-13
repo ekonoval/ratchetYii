@@ -13,7 +13,8 @@ class RatchetController extends CController
             //    $context = new ZMQContext();
             //    $socket = $context->getSocket(ZMQ::SOCKET_PUSH, 'somePesistentString');
             //    $socket->connect("tcp://localhost:1234");
-            $eventRiser = new AppdRatchetEventRiser('localhost:1234');
+            //$eventRiser = new AppdRatchetEventRiser('localhost:1234');
+            $eventRiser = AppdRatchetEventRiser::createByConfigParams();
 
             $res = array();
 
@@ -44,6 +45,10 @@ class RatchetController extends CController
 
     public function actionTestWs()
     {
-        $this->render('testWs_tpl');
+        $rtParamsGetter = new AppdRatchetParams();
+
+        $this->render('testWs_tpl', array(
+            'webSocketConnectionStr' => $rtParamsGetter->getClientWebsocketConnectionString()
+        ));
     }
 }
